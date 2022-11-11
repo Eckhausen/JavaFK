@@ -1,0 +1,16 @@
+##*Vad är det för skillnad på Map och HashMap?##
+Map är ett interface och implementeras som HashMap som då även kan initieras.
+
+##*Vad är det för skillnad på HashMap och TreeMap? Vad beror skillnaderna på?##
+TreeMap sorterar nycklarna efter naturlig ordning. Däremot är HashMap snabbare. 
+
+##*På laborationen har du bl.a. använt de abstrakta datatyperna mängd och map. Vad
+har de för speciella egenskapar som gör dem lämpliga att använda på det sätts som
+har gjorts?## 
+-------
+
+
+##*Du har även använt Javas inbyggda sortering med hjälp av en sorteringsordning
+du själv angivit. Hur fungerar det? Och vilken funktion har interfacet Comparator i
+detta##
+Vi implementerade comparatorn så att vi kundera sortera utifrån våra egna önskemål.

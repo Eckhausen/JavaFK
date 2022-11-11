@@ -1,0 +1,84 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch F4",
+            "request": "launch",
+            "mainClass": "lpt.F4",
+            "projectName": "experimental_vscode_workspace_v1_5545e9f0"
+        },
+        {
+            "type": "java",
+            "name": "Launch BookReaderApplication",
+            "request": "launch",
+            "mainClass": "textproc.BookReaderApplication",
+            "projectName": "experimental_vscode_workspace_v1_5545e9f0"
+        },
+        {
+            "type": "java",
+            "name": "Launch BookReaderApplication",
+            "request": "launch",
+            "mainClass": "textproc.BookReaderApplication",
+            "projectName": "experimental_vscode_workspace_v1_23a88a90"
+        },
+        {
+            "type": "java",
+            "name": "Launch testList",
+            "request": "launch",
+            "mainClass": "textproc.testList",
+            "projectName": "experimental_vscode_workspace_v1_23a88a90"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestScheduler",
+            "request": "launch",
+            "mainClass": "lpt.TestScheduler",
+            "projectName": "experimental_vscode_workspace_v1_23a88a90"
+        },
+        {
+            "type": "java",
+            "name": "Launch F4",
+            "request": "launch",
+            "mainClass": "lpt.F4",
+            "projectName": "experimental_vscode_workspace_v1_23a88a90"
+        },
+        {
+            "type": "java",
+            "name": "Launch Holgersson",
+            "request": "launch",
+            "mainClass": "textproc.Holgersson",
+            "projectName": "experimental_vscode_workspace_v1_23a88a90"
+        },
+        {
+            "type": "java",
+            "name": "Launch F4",
+            "request": "launch",
+            "mainClass": "lpt.F4",
+            "projectName": "experimental_vscode_workspace_v1_ca2833fe"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestScheduler",
+            "request": "launch",
+            "mainClass": "lpt.TestScheduler",
+            "projectName": "experimental_vscode_workspace_v1_ca2833fe"
+        },
+        {
+            "type": "java",
+            "name": "Launch Holgersson",
+            "request": "launch",
+            "mainClass": "textproc.Holgersson",
+            "projectName": "experimental_vscode_workspace_v1_ca2833fe"
+        }
+    ]
+}

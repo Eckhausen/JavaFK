@@ -1,0 +1,58 @@
+package game;
+
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class TakePinsGame {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // JOptionPane.showMessageDialog(null  , "Hello");
+        // System.out.println(JOptionPane.showConfirmDialog(null, "hejsan", "titel", JOptionPane.OK_CANCEL_OPTION));
+        UserInterface.printMessage("Take pins game!");
+        UserInterface.askForInt("Hur många pinnar vill du ta?");
+        System.out.println("null");
+        
+    //     Board b = new Board();
+    //     System.out.println("Hur många pins vill du spela med? ");
+    //     b.setUp(scan.nextInt());
+    //     System.out.println("Ange namn på spelaren: ");
+    //     HumanPlayer p1 = new HumanPlayer(scan.next());
+    //     ComputerPlayer CPU = new ComputerPlayer("CPU"); //Tar mest lämpliga metod i detta fallet från ComputerPlayer.
+    //     System.out.println(p1.getUserID() + " vs " + CPU.getUserID());
+        
+
+    //     System.out.println("Vill du börja (Y/N)?");
+    //     String goFirst = scan.next().toLowerCase();
+    //     Boolean myTurn;
+    //     if(goFirst.equalsIgnoreCase("y")){
+    //         myTurn = true;
+    //     } else {
+    //         myTurn = false;
+    //     }
+
+    //     while(b.getNoPins() > 0){
+    //         if(myTurn){
+    //             System.out.println("Det finns " + b.getNoPins() + " pins." + "\n" + "Hur många pinnar vill du ta? 1 eller 2?");
+    //             int numberToTake = scan.nextInt();
+    //             if (numberToTake >= 2){
+    //                 numberToTake = 2;
+    //             } else {
+    //                 numberToTake = 1;
+    //             }
+    //             b.takePins(numberToTake);
+    //             myTurn = false;
+    //         } else if (!myTurn){
+    //             CPU.takePins(b); 
+    //             myTurn = true;
+    //         }
+    //     }
+    //     if(myTurn){
+    //             System.out.println("Datorn vann.");
+    //         } else {
+    //             System.out.println("Du vann.");
+    //         }
+    // }   
+    
+}
+}
