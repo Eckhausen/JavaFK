@@ -18,8 +18,23 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return	true if it was possible to add the element 
 	 * 			to this queue, else false
 	 */
-	public boolean offer(E e) {
-		return false;
+	public boolean offer(E e) {		
+		if(last == null){ //Listan är tom.
+			last = new QueueNode<>(e);
+			size++;
+			return true;
+		}
+		if(last.next == null){ //Bara en i listan.
+			last.next = new QueueNode<>(e);
+			last.next.next = last;
+			size++;
+		}
+		//mer än 2 noder i listan.
+		QueueNode<E> temp = new QueueNode<E>(e);
+		temp.next = last.next;
+		last.next = temp;
+		size++;		
+		return true;
 	}
 	
 	/**	
@@ -27,7 +42,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return the number of elements in this queue
 	 */
 	public int size() {		
-		return 0;
+		return this.size;
 	}
 	
 	/**	
@@ -37,7 +52,14 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * 			if this queue is empty
 	 */
 	public E peek() {
+		if(last == null){
+			return null;
+		}
+		if(last.next == null){
+			return last.element;
+		}
 		return null;
+		
 	}
 
 	/**	
@@ -54,7 +76,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * Returns an iterator over the elements in this queue
 	 * @return an iterator over the elements in this queue
 	 */	
-	public Iterator<E> iterator() {
+	public Iterator<E> iterator() { //låt bli.
 		return null;
 	}
 	
