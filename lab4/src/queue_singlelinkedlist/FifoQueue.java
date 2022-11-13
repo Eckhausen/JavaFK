@@ -24,15 +24,17 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 			size++;
 			return true;
 		}
-		if(last.next == null){ //Bara en i listan.
-			last.next = new QueueNode<>(e);
-			last.next.next = last;
-			size++;
-		}
+		// if(last.next == null){ //Bara en i listan.
+		// 	last.next = new QueueNode<>(e);
+		// 	last.next.next = last;
+		// 	last = last.next;
+		// 	size++;
+		// }
 		//mer än 2 noder i listan.
 		QueueNode<E> temp = new QueueNode<E>(e);
 		temp.next = last.next;
 		last.next = temp;
+		last = temp;
 		size++;		
 		return true;
 	}
@@ -69,6 +71,10 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return 	the head of this queue, or null if the queue is empty 
 	 */
 	public E poll() {
+		if(!(last == null)){
+			size--;
+			return last.element;
+		}
 		return null;
 	}
 	
@@ -76,8 +82,27 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * Returns an iterator over the elements in this queue
 	 * @return an iterator over the elements in this queue
 	 */	
-	public Iterator<E> iterator() { //låt bli.
-		return null;
+	public Iterator<E> iterator() { 
+		return new QueueIterator();
+	}
+	private class QueueIterator implements Iterator<E> {
+		private QueueNode<E> pos;
+		private QueueIterator(){
+			
+		}
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public E next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 	}
 	
 	private static class QueueNode<E> {
@@ -89,5 +114,6 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 			next = null;
 		}
 	}
+
 
 }
