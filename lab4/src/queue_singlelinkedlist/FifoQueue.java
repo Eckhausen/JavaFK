@@ -93,10 +93,11 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 		
 		@Override
 		public boolean hasNext() {
-			if(size > 0){
-				return true;
-			}
-			return false; 
+			// if(size > 0){
+			// 	return true;
+			// }
+			// return false; 
+			return pos != null;
 		}
 		
 		@Override
@@ -106,8 +107,9 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 			if(hasNext()){
 				pos = pos.next;
 				return temp.next.element;
+			} else {
+				throw new NoSuchElementException();
 			}
-			return null;
 		}
 		
 	}
