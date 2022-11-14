@@ -24,15 +24,17 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 			size++;
 			return true;
 		}
-		if(last.next == null){ //Bara en i listan.
-			last.next = new QueueNode<>(e);
-			last.next.next = last;
-			size++;
-		}
+		// if(last.next == null){ //Bara en i listan.
+		// 	last.next = new QueueNode<>(e);
+		// 	last.next.next = last;
+		// 	last = last.next;
+		// 	size++;
+		// }
 		//mer än 2 noder i listan.
 		QueueNode<E> temp = new QueueNode<E>(e);
 		temp.next = last.next;
 		last.next = temp;
+		last = temp;
 		size++;		
 		return true;
 	}
@@ -69,11 +71,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return 	the head of this queue, or null if the queue is empty 
 	 */
 	public E poll() {
-		if(last == null){
-			return null;
-		}
-		if(last.next == null){
-			last.next = last.next.next;
+		if(!(last == null)){
 			size--;
 			return last.element;
 		}
@@ -84,8 +82,36 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * Returns an iterator over the elements in this queue
 	 * @return an iterator over the elements in this queue
 	 */	
-	public Iterator<E> iterator() { //låt bli.
-		return null;
+	public Iterator<E> iterator() { 
+		return new QueueIterator();
+	}
+	private class QueueIterator implements Iterator<E> {
+		private QueueNode<E> pos;
+		private QueueIterator(){
+			this.pos = last.next;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			// if(size > 0){
+			// 	return true;
+			// }
+			// return false; 
+			return pos != null;
+		}
+		
+		@Override
+		public E next() {
+			QueueNode<E> temp;
+			temp = pos;
+			if(hasNext()){
+				pos = pos.next;
+				return temp.next.element;
+			} else {
+				throw new NoSuchElementException();
+			}
+		}
+		
 	}
 	
 	private static class QueueNode<E> {
@@ -97,5 +123,6 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 			next = null;
 		}
 	}
+
 
 }
