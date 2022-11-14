@@ -19,24 +19,20 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * 			to this queue, else false
 	 */
 	public boolean offer(E e) {		
-		if(last == null){ //Listan är tom.
+		if(last == null){ //Listan är tom. Skapar en som pekar på sig själv.
 			last = new QueueNode<>(e);
+			last.next = last;
 			size++;
 			return true;
+		} else { //Mer än en, skapar ny nod som pekar på den första, 
+			QueueNode<E> temp = new QueueNode<E>(e);
+			temp.next = last.next;
+			last.next = temp;
+			last = temp;
+			size++;		
+			return true;
 		}
-		// if(last.next == null){ //Bara en i listan.
-		// 	last.next = new QueueNode<>(e);
-		// 	last.next.next = last;
-		// 	last = last.next;
-		// 	size++;
-		// }
-		//mer än 2 noder i listan.
-		QueueNode<E> temp = new QueueNode<E>(e);
-		temp.next = last.next;
-		last.next = temp;
-		last = temp;
-		size++;		
-		return true;
+		
 	}
 	
 	/**	
@@ -54,11 +50,8 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * 			if this queue is empty
 	 */
 	public E peek() {
-		if(last == null){
-			return null;
-		}
-		if(last.next == null){
-			return last.element;
+		if(!(last == null)){
+			return last.next.element;
 		}
 		return null;
 		
@@ -71,11 +64,21 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return 	the head of this queue, or null if the queue is empty 
 	 */
 	public E poll() {
-		if(!(last == null)){
-			size--;
-			return last.element;
+		QueueNode<E> firstNode; 
+		if(last == null){ //Tom lista
+			return null;
 		}
-		return null;
+		if(last.next == last){ //En nod i listan.
+			firstNode = last;
+			last = null;
+			size--;
+			return firstNode.element;
+		} else {
+			firstNode = last.next;
+			last.next = last.next.next;
+			size--;
+			return firstNode.element;
+		}
 	}
 	
 	/**	
@@ -93,10 +96,6 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 		
 		@Override
 		public boolean hasNext() {
-			// if(size > 0){
-			// 	return true;
-			// }
-			// return false; 
 			return pos != null;
 		}
 		
