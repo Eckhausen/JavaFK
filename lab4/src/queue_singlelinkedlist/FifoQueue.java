@@ -1,7 +1,7 @@
 package queue_singlelinkedlist;
 import java.util.*;
 
-public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
+public class FifoQueue<E> extends AbstractQueue<E> {
 	private QueueNode<E> last;
 	private int size;
 
@@ -97,7 +97,27 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	* @throws IllegalArgumentException if this queue and q are identical
 	*/
 	public void append(FifoQueue<E> q){
-		
+		if(this.equals(q)) throw new IllegalArgumentException(); //Dublett
+		if(this.last.equals(null)){ 
+			if(q.last.equals(null)){ //Om båda är null
+				this.last = null;
+			}
+		} else if(!q.last.equals(null)){ //Om q1 är null men q2 inte är null
+			this.last = q.last;
+		} else { //Om varken är null
+			if(!q.last.equals(null)){
+				//append q2 till q1.
+				QueueNode<E> firstObj = this.last.next;	//Spara FÖRSTA objektet i q1.
+				this.last.next = q.last.next;
+				q.last.next = firstObj;
+				this.size += q.size;
+				
+				//Töm q2.
+				q.last.next = null;
+				q.last = null;
+				q.size = 0;
+			}
+		}
 	}
 
 	private class QueueIterator implements Iterator<E> {

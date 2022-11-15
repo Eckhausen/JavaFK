@@ -1,7 +1,7 @@
 package queue_delegate;
 import java.util.*;
 
-public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
+public class FifoQueue<E> extends AbstractQueue<E> {
 	private Queue<E> list; //Hålla reda på elementet i kön.
 
 	public FifoQueue() {
