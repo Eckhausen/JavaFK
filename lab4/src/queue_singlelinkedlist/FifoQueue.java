@@ -88,6 +88,18 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	public Iterator<E> iterator() { 
 		return new QueueIterator();
 	}
+
+	/**
+	* Appends the specified queue to this queue
+	* post: all elements from the specified queue are appended
+	* to this queue. The specified queue (q) is empty after the call.
+	* @param q the queue to append
+	* @throws IllegalArgumentException if this queue and q are identical
+	*/
+	public void append(FifoQueue<E> q){
+		
+	}
+
 	private class QueueIterator implements Iterator<E> {
 		private QueueNode<E> pos;
 		private QueueIterator(){
