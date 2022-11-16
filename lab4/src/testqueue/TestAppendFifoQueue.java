@@ -221,9 +221,9 @@ class TestAppendFifoQueue {
         list1.append(list2);
         assertEquals(2, list1.size(), "Wrong size");
         
-        assertEquals(1, list1.poll(), "sadasdasd");
-        assertEquals(2, list1.poll(), "sadasdasd");
-        assertEquals(null, list1.poll(), "sadasdasd");
+        assertEquals(1, list1.poll());
+        assertEquals(2, list1.poll());
+        assertEquals(null, list1.poll());
         assertEquals(0, list1.size(), "Wrong size");
 
 
