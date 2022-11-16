@@ -98,22 +98,27 @@ public class FifoQueue<E> extends AbstractQueue<E> {
 	*/
 	public void append(FifoQueue<E> q){
 		if(this.equals(q)) throw new IllegalArgumentException(); //Dublett
-		if(this.last.equals(null)){ 
-			if(q.last.equals(null)){ //Om båda är null
+		if(this.last == null){ 
+			if(q.last == null){ //Om båda är null
 				this.last = null;
-			}
-		} else if(!q.last.equals(null)){ //Om q1 är null men q2 inte är null
+			} else if(q.last != null){ //Om q1 är null men q2 inte är null
 			this.last = q.last;
+			this.size += q.size;
+			q.size = 0;
+			q.last = null;
+		}
 		} else { //Om varken är null
-			if(!q.last.equals(null)){
+			if(q.last != null){
 				//append q2 till q1.
 				QueueNode<E> firstObj = this.last.next;	//Spara FÖRSTA objektet i q1.
 				this.last.next = q.last.next;
 				q.last.next = firstObj;
+				//Sätter senast inlagda till första element i q2.
+				this.last = q.last;
 				this.size += q.size;
 				
 				//Töm q2.
-				q.last.next = null;
+				//q.last.next = null;
 				q.last = null;
 				q.size = 0;
 			}
