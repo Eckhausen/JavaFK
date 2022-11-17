@@ -40,10 +40,15 @@ public class Koch extends Fractal {
 	private void fractalLine(TurtleGraphics turtle, int order, double length, int alpha) {
 		if(order == 0){ //Rita en linje med längden length, och riktningen alpha.
 			//Obs turtle pekar norrut vid start.
-			turtle.right();
+			turtle.setDirection(alpha);
 			turtle.penDown();
 			turtle.forward(length);
 			turtle.penUp();
+		} else {
+			fractalLine(turtle, order-1, length/3, alpha);
+			fractalLine(turtle, order-1, length/3, alpha-60);
+			fractalLine(turtle, order-1, length/3, alpha+60);
+			fractalLine(turtle, order-1, length/3, alpha);
 		}
 	}
 
