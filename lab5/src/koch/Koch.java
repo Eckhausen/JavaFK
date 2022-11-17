@@ -38,7 +38,13 @@ public class Koch extends Fractal {
 	 * Reursive method: Draws a recursive line of the triangle. 
 	 */
 	private void fractalLine(TurtleGraphics turtle, int order, double length, int alpha) {
-		//TODO
+		if(order == 0){ //Rita en linje med längden length, och riktningen alpha.
+			//Obs turtle pekar norrut vid start.
+			turtle.right();
+			turtle.penDown();
+			turtle.forward(length);
+			turtle.penUp();
+		}
 	}
 
 }
