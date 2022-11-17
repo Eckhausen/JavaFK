@@ -28,7 +28,7 @@ public class Koch extends Fractal {
     @Override
 	public void draw(TurtleGraphics turtle) {
 		turtle.moveTo(turtle.getWidth() / 2.0 - length / 2.0,
-				turtle.getHeight() / 2.0 + Math.sqrt(3.0) * length / 4.0);
+		turtle.getHeight() / 2.0 + Math.sqrt(3.0) * length / 4.0);
 		fractalLine(turtle, order,length,0);
 		fractalLine(turtle, order,length,120);
 		fractalLine(turtle, order,length,240);
@@ -39,7 +39,6 @@ public class Koch extends Fractal {
 	 */
 	private void fractalLine(TurtleGraphics turtle, int order, double length, int alpha) {
 		if(order == 0){ //Rita en linje med längden length, och riktningen alpha.
-			//Obs turtle pekar norrut vid start.
 			turtle.setDirection(alpha);
 			turtle.penDown();
 			turtle.forward(length);
