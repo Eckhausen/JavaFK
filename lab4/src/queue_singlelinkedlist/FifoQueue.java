@@ -65,6 +65,7 @@ public class FifoQueue<E> extends AbstractQueue<E> {
 	 */
 	public E poll() {
 		QueueNode<E> firstNode; 
+		// E element;
 		if(last == null){ //Tom lista
 			return null;
 		}
