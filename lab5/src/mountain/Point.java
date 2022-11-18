@@ -39,5 +39,4 @@ public class Point {
 	public int hashCode() {
 	    return  31 * x + y;
 	}
-	
 }
