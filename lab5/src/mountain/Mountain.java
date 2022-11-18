@@ -5,15 +5,16 @@ import fractal.TurtleGraphics;
 
 public class Mountain extends Fractal {
     private int length;
-    private Point a;
-    private Point b;
-    private Point c;
+    private Point p1;
+    private Point p2;
+    private Point p3;
 
-    public Mountain(Point a, Point b, Point c){
+    public Mountain(int length, Point p1, Point p2, Point p3){
         super();
-        this.a = new Point(165, 396);
-        this.b = new Point(289, 157);
-        this.c = new Point(486, 433);
+        this.length = length;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
     }
 
     @Override
@@ -23,25 +24,27 @@ public class Mountain extends Fractal {
 
     @Override
     public void draw(TurtleGraphics turtle) {
-        // turtle.moveTo(a.getX(), a.getY());
-        // turtle.penDown();
-        // turtle.forwardTo(b.getX(), b.getY());
-        // turtle.forwardTo(c.getX(), c.getY());
-        // turtle.forwardTo(a.getX(), a.getY());
-        fractalLine(turtle, order, length, order);
+        fractalLine(turtle, order, length);
 
         
     }
 
-    private void fractalLine(TurtleGraphics turtle, int order, double length, double alpha){
+    private void fractalLine(TurtleGraphics turtle, int order, int length){
         if(order == 0){
-            turtle.moveTo(a.getX(), a.getY());
-            turtle.penDown();
-            turtle.forwardTo(b.getX(), b.getY());
-            turtle.forwardTo(c.getX(), c.getY());
-            turtle.forwardTo(a.getX(), a.getY());
+            turtle.moveTo(p1.getX(), p1.getY());
+            turtle.forwardTo(p2.getX(), p2.getY());
+            turtle.forwardTo(p3.getX(), p3.getY());
+            turtle.forwardTo(p1.getX(), p1.getY());
         } else {
+            turtle.moveTo(p1.getX(), p1.getY());
+            turtle.forwardTo(p2.getX(), p2.getY());
+            turtle.forwardTo(p3.getX(), p3.getY());
+            turtle.forwardTo(p1.getX(), p1.getY());
             
+            fractalLine(turtle, order-1, length);
+            fractalLine(turtle, order-1, length);
+            fractalLine(turtle, order-1, length);
+            order--;
         }
     }
 
