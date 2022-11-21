@@ -1,5 +1,7 @@
 package mountain;
 
+import java.util.HashMap;
+
 import fractal.Fractal;
 import fractal.TurtleGraphics;
 
@@ -60,6 +62,25 @@ public class Mountain extends Fractal {
         return (int) randValue + ((p2.getY() - p1.getY())/2) + p1.getY();
     }
 
+    public class Side {
+        HashMap<Side, Point> sides = new HashMap<>();
+        private Side(){
+            
+        }
+        
+        @Override
+        public boolean equals(Object obj){
+            return false;
+    
+        }
+    
+        @Override
+        public int hashCode(){
+            return 0;
+    
+        }
+    
+    }
     
 
 
