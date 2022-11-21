@@ -10,7 +10,8 @@ public class Mountain extends Fractal {
     private Point b;
     private Point c;
     private double dev; 
-
+    HashMap<Side, Point> sides = new HashMap<>();
+    
     public Mountain(int length, Point p1, Point p2, Point p3, double dev){
         super();
         this.a = p1;
@@ -43,6 +44,14 @@ public class Mountain extends Fractal {
             Point BC = new Point(setNewX(b, c), setNewY(b, c, dev));
             Point AC = new Point(setNewX(a, c), setNewY(a, c, dev));
 
+            sides.put(new Side(a, b), AB);
+            sides.put(new Side(b, c), BC);
+            sides.put(new Side(a, c), AC);
+
+            
+
+            
+
             dev = dev/2;
             order--;
             fractalLine(turtle, order, a, AB, AC, dev); 
@@ -63,9 +72,10 @@ public class Mountain extends Fractal {
     }
 
     public class Side {
-        HashMap<Side, Point> sides = new HashMap<>();
-        private Side(){
-            
+        private Point p1, p2;
+        private Side(Point p1, Point p2){
+            this.p1 = p1;
+            this.p2 = p2;
         }
         
         @Override
@@ -76,7 +86,7 @@ public class Mountain extends Fractal {
     
         @Override
         public int hashCode(){
-            return 0;
+            return p1.hashCode() + p2.hashCode();
     
         }
     
