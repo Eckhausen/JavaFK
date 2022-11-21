@@ -37,21 +37,17 @@ public class Mountain extends Fractal {
             turtle.moveTo(a.getX(), a.getY());
             turtle.forwardTo(b.getX(), b.getY());
             turtle.forwardTo(c.getX(), c.getY());
-            turtle.forwardTo(a.getX(), a.getY());
+            turtle.forwardTo(a.getX(), a.getY());            
+            
         } else {
-
             Point AB = new Point(setNewX(a, b), setNewY(a, b, dev));
             Point BC = new Point(setNewX(b, c), setNewY(b, c, dev));
             Point AC = new Point(setNewX(a, c), setNewY(a, c, dev));
-
+            
             sides.put(new Side(a, b), AB);
             sides.put(new Side(b, c), BC);
-            sides.put(new Side(a, c), AC);
-
+            sides.put(new Side(a, c), AC);        
             
-
-            
-
             dev = dev/2;
             order--;
             fractalLine(turtle, order, a, AB, AC, dev); 
@@ -80,8 +76,13 @@ public class Mountain extends Fractal {
         
         @Override
         public boolean equals(Object obj){
+            if(obj instanceof Side){
+                Side side = (Side) obj;
+                if(side.hashCode() == this.hashCode()){
+                    return true;
+                }
+            }
             return false;
-    
         }
     
         @Override
