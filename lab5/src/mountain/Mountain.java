@@ -1,7 +1,5 @@
 package mountain;
-
 import java.util.HashMap;
-
 import fractal.Fractal;
 import fractal.TurtleGraphics;
 
@@ -28,8 +26,6 @@ public class Mountain extends Fractal {
     @Override
     public void draw(TurtleGraphics turtle) {
         fractalLine(turtle, order, a, b, c, dev);
-
-        
     }
 
     private void fractalLine(TurtleGraphics turtle, int order, Point a, Point b, Point c, double dev){
@@ -40,13 +36,18 @@ public class Mountain extends Fractal {
             turtle.forwardTo(a.getX(), a.getY());            
             
         } else {
-            Point AB = new Point(setNewX(a, b), setNewY(a, b, dev));
-            Point BC = new Point(setNewX(b, c), setNewY(b, c, dev));
-            Point AC = new Point(setNewX(a, c), setNewY(a, c, dev));
+            long t0 = System.nanoTime();
+            // Point AB = new Point(setNewX(a, b), setNewY(a, b, dev));
+            // Point BC = new Point(setNewX(b, c), setNewY(b, c, dev));
+            // Point AC = new Point(setNewX(a, c), setNewY(a, c, dev));
+            // sides.put(new Side(a, b), AB);
+            // sides.put(new Side(b, c), BC);
+            // sides.put(new Side(a, c), AC);
+
+            Point AB =  mid(a, b, dev);
+            Point BC =  mid(b, c, dev);
+            Point AC =  mid(a, c, dev);
             
-            sides.put(new Side(a, b), AB);
-            sides.put(new Side(b, c), BC);
-            sides.put(new Side(a, c), AC);        
             
             dev = dev/2;
             order--;
@@ -54,6 +55,8 @@ public class Mountain extends Fractal {
             fractalLine(turtle, order, AB, b, BC, dev);
             fractalLine(turtle, order, AC, BC, c, dev);
             fractalLine(turtle, order, AB, BC, AC, dev); //Mitten
+            long t1 = System.nanoTime();
+            System.out.println((t1-t0) / 1000000.0  + " ms");
         }
 
     }
@@ -67,6 +70,25 @@ public class Mountain extends Fractal {
         return (int) randValue + ((p2.getY() - p1.getY())/2) + p1.getY();
     }
 
+    //Skapa mid (mittpunkten av en sida)
+    private Point mid(Point point1, Point point2, double dev){
+        int x = setNewX(point1, point2);
+        int y = setNewY(point1, point2, dev);
+        Side temp = new Side(point1, point2);
+        Point mid = new Point(x, y);
+
+        for(Side s: sides.keySet()){
+            if(s.equals(temp)){
+                mid = sides.get(s);
+                sides.remove(s);
+                return mid;
+            }
+        }
+        sides.put(temp, mid);
+        return mid;
+    }
+
+
     public class Side {
         private Point p1, p2;
         private Side(Point p1, Point p2){
@@ -76,11 +98,8 @@ public class Mountain extends Fractal {
         
         @Override
         public boolean equals(Object obj){
-            if(obj instanceof Side){
-                Side side = (Side) obj;
-                if(side.hashCode() == this.hashCode()){
-                    return true;
-                }
+            if(this.hashCode() == obj.hashCode()){
+                return true;
             }
             return false;
         }
@@ -93,6 +112,4 @@ public class Mountain extends Fractal {
     
     }
     
-
-
 }
