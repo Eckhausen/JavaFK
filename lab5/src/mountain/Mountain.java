@@ -98,9 +98,13 @@ public class Mountain extends Fractal {
         
         @Override
         public boolean equals(Object obj){
-            if(this.hashCode() == obj.hashCode()){
-                return true;
+            if(!(obj instanceof Side)){
+                return false;
             }
+            Side comp = (Side) obj;
+            if(comp.p1.equals(this.p1) && comp.p2.equals(this.p2)) return true;
+            if(comp.p1.equals(this.p2) && comp.p2.equals(this.p1)) return true;
+
             return false;
         }
     
