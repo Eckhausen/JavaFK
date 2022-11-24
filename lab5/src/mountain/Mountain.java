@@ -10,7 +10,7 @@ public class Mountain extends Fractal {
     private double dev; 
     HashMap<Side, Point> sides = new HashMap<>();
     
-    public Mountain(int length, Point p1, Point p2, Point p3, double dev){
+    public Mountain(Point p1, Point p2, Point p3, double dev){
         super();
         this.a = p1;
         this.b = p2;
@@ -36,13 +36,10 @@ public class Mountain extends Fractal {
             turtle.forwardTo(a.getX(), a.getY());            
             
         } else {
-            long t0 = System.nanoTime();
+            //long t0 = System.nanoTime();
             // Point AB = new Point(setNewX(a, b), setNewY(a, b, dev));
             // Point BC = new Point(setNewX(b, c), setNewY(b, c, dev));
             // Point AC = new Point(setNewX(a, c), setNewY(a, c, dev));
-            // sides.put(new Side(a, b), AB);
-            // sides.put(new Side(b, c), BC);
-            // sides.put(new Side(a, c), AC);
 
             Point AB =  mid(a, b, dev);
             Point BC =  mid(b, c, dev);
@@ -55,8 +52,8 @@ public class Mountain extends Fractal {
             fractalLine(turtle, order, AB, b, BC, dev);
             fractalLine(turtle, order, AC, BC, c, dev);
             fractalLine(turtle, order, AB, BC, AC, dev); //Mitten
-            long t1 = System.nanoTime();
-            System.out.println((t1-t0) / 1000000.0  + " ms");
+            //long t1 = System.nanoTime();
+            //System.out.println((t1-t0) / 1000000.0  + " ms");
         }
 
     }
