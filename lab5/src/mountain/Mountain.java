@@ -29,6 +29,7 @@ public class Mountain extends Fractal {
     }
 
     private void fractalLine(TurtleGraphics turtle, int order, Point a, Point b, Point c, double dev){
+        long t0 = System.nanoTime();
         if(order == 0){
             turtle.moveTo(a.getX(), a.getY());
             turtle.forwardTo(b.getX(), b.getY());
@@ -36,7 +37,6 @@ public class Mountain extends Fractal {
             turtle.forwardTo(a.getX(), a.getY());            
             
         } else {
-            //long t0 = System.nanoTime();
             // Point AB = new Point(setNewX(a, b), setNewY(a, b, dev));
             // Point BC = new Point(setNewX(b, c), setNewY(b, c, dev));
             // Point AC = new Point(setNewX(a, c), setNewY(a, c, dev));
@@ -52,9 +52,9 @@ public class Mountain extends Fractal {
             fractalLine(turtle, order, AB, b, BC, dev);
             fractalLine(turtle, order, AC, BC, c, dev);
             fractalLine(turtle, order, AB, BC, AC, dev); //Mitten
-            //long t1 = System.nanoTime();
-            //System.out.println((t1-t0) / 1000000.0  + " ms");
         }
+        long t1 = System.nanoTime();
+        System.out.println((t1-t0) / 1000000.0  + " ms");
 
     }
     
