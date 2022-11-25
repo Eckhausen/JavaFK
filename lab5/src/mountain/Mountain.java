@@ -73,7 +73,7 @@ public class Mountain extends Fractal {
         int y = setNewY(point1, point2, dev);
         Side temp = new Side(point1, point2);
         Point mid = new Point(x, y);
-
+        //Hashmap har contains metod.
         for(Side s: sides.keySet()){
             if(s.equals(temp)){
                 mid = sides.get(s);
