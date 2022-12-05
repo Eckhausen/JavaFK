@@ -33,9 +33,39 @@ public class BinarySearchTree<E> {
 	 * @return true if the the element was inserted
 	 */
 	public boolean add(E x) {
-		return false;
+		if(size == 0){
+			root = new BinaryNode<E>(x);
+			size ++;
+			return true;
+		}
+		return add(root, x);
+		//Metoden ska lägga in elementet x i trädet om det inte redan finns. Metoden ska returnera
+		// true om insättningen kunde utföras, annars false. Implementeringen ska vara rekursiv.
+		// Tänk noga efter hur du ska jämföra två element för att upptäcka dubbletter resp. för att
+		// se om det nya elementet ska sättas in till vänster eller till höger
 	}
 	
+	private boolean add(BinaryNode<E> node, E x) {
+		//Ifall noden är större än X, placera x till vänster. 
+		if(comparator.compare(node.element, x) > 0){
+			if(node.left == null){
+				node.left = new BinaryNode<E>(x);
+				size++;
+				return true;
+			} else {
+				return add(node.left, x);
+			}
+		//Ifall noden är mindre än X, placera x till höger.
+		} else if(comparator.compare(node.element, x) < 0){
+			if(node.right == null){
+				node.right = new BinaryNode<E>(x);
+				size ++;
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Computes the height of tree.
 	 * @return the height of the tree
@@ -49,21 +79,30 @@ public class BinarySearchTree<E> {
 	 * @return the number of elements in this tree
 	 */
 	public int size() {
-		return 0;
+		return size;
 	}
 	
 	/**
 	 * Removes all of the elements from this list.
 	 */
 	public void clear() {
-		
+		root = null;
+		size = 0;
 	}
 	
 	/**
 	 * Print tree contents in inorder.
 	 */
 	public void printTree() {
+		inOrder(root);
+	}
 
+	private void inOrder(BinaryNode<E> root) {
+		if(root != null){
+			inOrder(root.left);
+			System.out.println(root.element);
+			inOrder(root.right);
+		}
 	}
 
 	/** 
