@@ -32,7 +32,11 @@ public class TestBST {
     @Test
     void testHeight(){
         assertEquals(0, BstInt.height());
-        assertEquals(0, BstString.height());
+        BstInt.add(1);
+        BstInt.add(2);
+        BstInt.add(3);
+        assertEquals(3, BstInt.size());
+        // assertEquals(0, BstString.height());
     }
     
     @Test

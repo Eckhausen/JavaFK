@@ -2,6 +2,7 @@ package bst;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random; //TEMP
 
 
 public class BinarySearchTree<E> {
@@ -146,5 +147,17 @@ public class BinarySearchTree<E> {
 			return 1 + Math.max(levels(node.left), levels(node.right));		//1 + högsta subnod.
 		}
 	}
-	
+	//#---Main----------------------#
+	public static void main(String[] args) {
+		Random rand = new Random();
+
+		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+		BSTVisualizer vis = new BSTVisualizer("Tree visualizer", 500, 500);
+		for(int i = 0; i < 20; i++){
+			bst.add(rand.nextInt(100));
+		}
+
+
+		vis.drawTree(bst);
+	}
 }
