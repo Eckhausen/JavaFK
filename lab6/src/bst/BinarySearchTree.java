@@ -40,10 +40,6 @@ public class BinarySearchTree<E> {
 			return true;
 		}
 		return add(root, x);
-		//Metoden ska lägga in elementet x i trädet om det inte redan finns. Metoden ska returnera
-		// true om insättningen kunde utföras, annars false. Implementeringen ska vara rekursiv.
-		// Tänk noga efter hur du ska jämföra två element för att upptäcka dubbletter resp. för att
-		// se om det nya elementet ska sättas in till vänster eller till höger
 	}
 	
 	private boolean add(BinaryNode<E> node, E x) {
@@ -57,15 +53,16 @@ public class BinarySearchTree<E> {
 				return add(node.left, x);
 			}
 		//Ifall noden är mindre än X, placera x till höger.
-		} else if(comparator.compare(node.element, x) < 0){
+		}else if(comparator.compare(node.element, x) < 0){
 			if(node.right == null){
 				node.right = new BinaryNode<E>(x);
-				size ++;
+				size++;
 				return true;
-			}
+			}else{
+				return add(node.right, x);
 		}
-		return false;
-	}
+	}return false;
+}
 
 	/**
 	 * Computes the height of tree.
@@ -141,8 +138,9 @@ public class BinarySearchTree<E> {
 	}
 
 	private int levels(BinaryNode<E> node){
+		if(root == null) return 0;
 		if(node.left == null && node.right == null){
-			return 0;
+			return 1;
 		} else {
 			return 1 + Math.max(levels(node.left), levels(node.right));		//1 + högsta subnod.
 		}
@@ -150,14 +148,22 @@ public class BinarySearchTree<E> {
 	//#---Main----------------------#
 	public static void main(String[] args) {
 		Random rand = new Random();
-
 		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 		BSTVisualizer vis = new BSTVisualizer("Tree visualizer", 500, 500);
-		for(int i = 0; i < 20; i++){
-			bst.add(rand.nextInt(100));
-		}
-
-
+		
+		// for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
+		// 	bst.add(rand.nextInt(20));
+		// }
+		
+		bst.add(7);
+		bst.add(3);
+		bst.add(11);
+		bst.add(1);
+		bst.add(5);
+		bst.add(9);
+		bst.add(13);
+		
+		bst.printTree();
 		vis.drawTree(bst);
 	}
 }
