@@ -163,6 +163,7 @@ public class BinarySearchTree<E> {
 		bst.add(9);
 		bst.add(13);
 		
+		
 		bst.printTree();
 		vis.drawTree(bst);
 	}
