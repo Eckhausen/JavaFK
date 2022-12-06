@@ -114,7 +114,7 @@ public class BinarySearchTree<E> {
 	 * Adds all elements from the tree rooted at n in inorder to the list sorted.
 	 */
 	private void toArray(BinaryNode<E> n, ArrayList<E> sorted) {
-	
+		
 	}
 	
 	/*
@@ -151,17 +151,17 @@ public class BinarySearchTree<E> {
 		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 		BSTVisualizer vis = new BSTVisualizer("Tree visualizer", 500, 500);
 		
-		// for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
-		// 	bst.add(rand.nextInt(20));
-		// }
+		for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
+			bst.add(rand.nextInt(20));
+		}
 		
-		bst.add(7);
-		bst.add(3);
-		bst.add(11);
-		bst.add(1);
-		bst.add(5);
-		bst.add(9);
-		bst.add(13);
+		// bst.add(7);
+		// bst.add(3);
+		// bst.add(11);
+		// bst.add(1);
+		// bst.add(5);
+		// bst.add(9);
+		// bst.add(13);
 		
 		
 		bst.printTree();
