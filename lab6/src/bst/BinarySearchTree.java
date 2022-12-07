@@ -14,7 +14,7 @@ public class BinarySearchTree<E> {
 	 * Constructs an empty binary search tree. 
 	 */
 	public BinarySearchTree() {
-		comparator = (e1, e2) -> ((Comparable<E>) e1).compareTo(e2);
+		comparator = (e1, e2) -> ((Comparable<E>) e1).compareTo(e2); 
 		root = null;
 		size = 0;
 	}
@@ -107,14 +107,20 @@ public class BinarySearchTree<E> {
 	 * Builds a complete tree from the elements in the tree.
 	 */
 	public void rebuild() {
-
+		ArrayList<E> sorted = new ArrayList<>();
+		toArray(root, sorted); 
+		root = buildTree(sorted, 0, sorted.size()-1); 
 	}
 	
 	/*
 	 * Adds all elements from the tree rooted at n in inorder to the list sorted.
 	 */
-	private void toArray(BinaryNode<E> n, ArrayList<E> sorted) {
-		
+	private void toArray(BinaryNode<E> node, ArrayList<E> sorted) {
+		if(node != null){
+			toArray(node.left, sorted); //Rekursion för att traversera ner till vänster
+			sorted.add(node.element); //"Rotnoden"
+			toArray(node.right, sorted); //Traversera ner till höger.
+		}
 	}
 	
 	/*
@@ -124,7 +130,16 @@ public class BinarySearchTree<E> {
 	 * Returns the root of tree.
 	 */
 	private BinaryNode<E> buildTree(ArrayList<E> sorted, int first, int last) {
-		return null;
+		int mid = (first + last) / 2; 
+		BinaryNode<E> midNode = new BinaryNode<E>(sorted.get(mid)); //Ta midpunkten
+		if(last < first){ //Om listan blir tom returnera null nod.
+			midNode = null;
+			return midNode;
+		} else {
+			midNode.left = buildTree(sorted, first, mid-1);
+			midNode.right = buildTree(sorted, mid+1, last);
+		}
+		return midNode;
 	}
 
 	static class BinaryNode<E> {
@@ -138,7 +153,7 @@ public class BinarySearchTree<E> {
 	}
 
 	private int levels(BinaryNode<E> node){
-		if(node == null){
+		if(node == null){ 
 			return 0;
 		} else {
 			return 1 + Math.max(levels(node.left), levels(node.right));		//1 + högsta subnod.
@@ -150,9 +165,9 @@ public class BinarySearchTree<E> {
 		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 		BSTVisualizer vis = new BSTVisualizer("Tree visualizer", 500, 500);
 		
-		// for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
-		// 	bst.add(rand.nextInt(20));
-		// }
+		for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
+			bst.add(rand.nextInt(20)+1);
+		}
 		
 		// bst.add(7);
 		// bst.add(3);
@@ -161,12 +176,13 @@ public class BinarySearchTree<E> {
 		// bst.add(5);
 		// bst.add(9);
 		// bst.add(13);
-		bst.add(2);
-		bst.add(1);
-		bst.add(3);
-		bst.add(4);
 		
+		// bst.add(2);
+		// bst.add(1);
+		// bst.add(3);
+		// bst.add(4);
 		
+		bst.rebuild();
 		bst.printTree();
 		vis.drawTree(bst);
 	}
