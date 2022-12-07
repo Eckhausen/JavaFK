@@ -177,13 +177,20 @@ public class BinarySearchTree<E> {
 		// bst.add(9);
 		// bst.add(13);
 		
-		// bst.add(2);
-		// bst.add(1);
-		// bst.add(3);
-		// bst.add(4);
-		
 		bst.rebuild();
 		bst.printTree();
 		vis.drawTree(bst);
 	}
 }
+
+//#######Diskussion#########
+//1. I vissa av de uppgifter du löst t.ex height och add finns det en publik metod som anropar motsvarande rekursiva metod.
+//Varför behövs bägge metoderna?
+//
+//### Användaren skall inte behöva skicka in massa parametervärden samt bör inte göra det pga säkerhet. Kan ställa till det en del annars. 
+//	  Rekursion bör alltid vara i privata metoder.
+//
+//2. I samband med ombyggnaden av trädet används en lista av typen ArrayList för att mellanlagra elementen. 
+//Skulle man lika gärna kunna använda en LinkedList?
+//
+//### Tidskomplexiteten för LinkedList när det kommer till att komma åt elementen är O(n) jämfört med ArrayList som är O(1).
