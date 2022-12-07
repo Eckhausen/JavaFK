@@ -138,9 +138,8 @@ public class BinarySearchTree<E> {
 	}
 
 	private int levels(BinaryNode<E> node){
-		if(root == null) return 0;
-		if(node.left == null && node.right == null){
-			return 1;
+		if(node == null){
+			return 0;
 		} else {
 			return 1 + Math.max(levels(node.left), levels(node.right));		//1 + högsta subnod.
 		}
@@ -151,9 +150,9 @@ public class BinarySearchTree<E> {
 		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 		BSTVisualizer vis = new BSTVisualizer("Tree visualizer", 500, 500);
 		
-		for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
-			bst.add(rand.nextInt(20));
-		}
+		// for(int i = 0; i < 20; i++){ //Skriver inte ut alla? Begränsad i BSTVis?
+		// 	bst.add(rand.nextInt(20));
+		// }
 		
 		// bst.add(7);
 		// bst.add(3);
@@ -162,6 +161,10 @@ public class BinarySearchTree<E> {
 		// bst.add(5);
 		// bst.add(9);
 		// bst.add(13);
+		bst.add(2);
+		bst.add(1);
+		bst.add(3);
+		bst.add(4);
 		
 		
 		bst.printTree();

@@ -53,19 +53,16 @@ public class TestBST {
     void testSize(){
         //######################################
         assertEquals(0, BstInt.size());
-        BstInt.add(7);
-		BstInt.add(3);
-		BstInt.add(11);
+        BstInt.add(2);
 		BstInt.add(1);
-		BstInt.add(5);
-		BstInt.add(9);
-		BstInt.add(13);
-        assertEquals(7, BstInt.size());
+		BstInt.add(3);
+		BstInt.add(4);
+        assertEquals(4, BstInt.size());
         assertEquals(3, BstInt.height());
         BstInt.clear();
         //######################################
         assertEquals(0, BstString.size());
-        BstString.add("B");
+        BstString.add("D");
         BstString.add("A");
         BstString.add("C");
         assertEquals(3, BstString.size());
@@ -77,21 +74,18 @@ public class TestBST {
         BstInt.add(7);
 		BstInt.add(3);
 		BstInt.add(11);
-		BstInt.add(1);
-		BstInt.add(5);
-		BstInt.add(9);
-		BstInt.add(13);
-        assertEquals(7, BstInt.size());
-        assertEquals(3, BstInt.height());
+		
+        assertEquals(3, BstInt.size());
+        assertEquals(2, BstInt.height());
         BstInt.clear();
         assertEquals(0, BstInt.size());
         assertEquals(0, BstInt.height());
         //######################################
         assertEquals(0, BstString.size());
         assertEquals(0, BstString.height());
-        BstString.add("B");
-        BstString.add("A");
-        BstString.add("C");
+        BstString.add("Y");
+        BstString.add("X");
+        BstString.add("Z");
         assertEquals(3, BstString.size());
         assertEquals(2, BstString.height());
         BstString.clear();
@@ -108,19 +102,16 @@ public class TestBST {
         BstInt.add(7);
 		BstInt.add(3);
 		BstInt.add(11);
-		BstInt.add(1);
-		BstInt.add(5);
-		BstInt.add(9);
-		BstInt.add(13);
-        assertEquals(7, BstInt.size());
-        assertEquals(3, BstInt.height());
+		
+        assertEquals(3, BstInt.size());
+        assertEquals(2, BstInt.height());
         //#######################################
         assertEquals(0, BstString.size());
         assertEquals(0, BstString.height());
-        BstString.add("B");
-        BstString.add("A");
-        BstString.add("C");
+        BstString.add("I");
+        BstString.add("J");
+        BstString.add("K");
         assertEquals(3, BstString.size());
-        assertEquals(2, BstString.height());
+        assertEquals(3, BstString.height());
     }
 }
