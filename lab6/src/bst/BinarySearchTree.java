@@ -33,7 +33,7 @@ public class BinarySearchTree<E> {
 	 * @param x element to be inserted
 	 * @return true if the the element was inserted
 	 */
-	public boolean add(E x) {
+	public boolean add(E x) { //DriverMetod
 		if(size == 0){
 			root = new BinaryNode<E>(x);
 			size ++;
@@ -97,9 +97,9 @@ public class BinarySearchTree<E> {
 
 	private void inOrder(BinaryNode<E> root) {
 		if(root != null){
-			inOrder(root.left);
-			System.out.println(root.element);
-			inOrder(root.right);
+			inOrder(root.left); //Om placerad här blir de PreOrder
+			System.out.println(root.element); //InOrder
+			inOrder(root.right); //PostOrder
 		}
 	}
 
@@ -193,4 +193,4 @@ public class BinarySearchTree<E> {
 //2. I samband med ombyggnaden av trädet används en lista av typen ArrayList för att mellanlagra elementen. 
 //Skulle man lika gärna kunna använda en LinkedList?
 //
-//### Tidskomplexiteten för LinkedList när det kommer till att komma åt elementen är O(n) jämfört med ArrayList som är O(1).
+//### Tidskomplexiteten för LinkedList när det kommer till att komma åt elementen är O(n)(linjär) jämfört med ArrayList som är O(1)(konstant).
